@@ -1,0 +1,4 @@
+[
+  {"jobtype": "tsqlite", "location": "Chinook_Sqlite.sqlite", "tablename": "Track"},
+  {"jobtype": "tconsole"}
+]
