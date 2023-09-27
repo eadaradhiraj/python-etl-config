@@ -1,6 +1,6 @@
 import pandas as pd
 
-class tFileDelimited:
+class tFileDelimitedInput:
 
     def __init__(
         self,

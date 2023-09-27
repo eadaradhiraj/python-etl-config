@@ -9,11 +9,11 @@ prevjob = None
 for job in jobs:
     classname = job.get("jobtype")
 
-    if classname == "tsqlite":
-        curr_job = job_classes.tsqlite(**job)
+    if classname == "tSqliteInput":
+        curr_job = job_classes.tSqliteInput(**job)
         prevjob = curr_job.get_data()
  
-    elif classname == "tconsole":
-        print(prevjob)
- 
-    # elif bike == "tFileDelimited":
+    elif classname == "tConsoleOutput":
+        curr_job = job_classes.tConsoleOutput()
+        curr_job.display(prevjob)
+        prevjob = None

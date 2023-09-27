@@ -2,9 +2,15 @@ import pandas as pd
 import sqlite3
 import os
 
-class tsqlite:
+class tSqliteInput:
 
     def __init__(self, **kwargs):
+        """
+        Parameters:
+        location: string path to sqlite database
+        query: SQL query optional
+        tablename: tablename
+        """
         self.con = sqlite3.connect(
             os.path.join(
                 kwargs.get("location")
