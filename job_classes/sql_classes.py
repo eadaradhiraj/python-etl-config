@@ -1,11 +1,10 @@
-import pandas as pd
-import sqlite3
-import os
+from pandas import read_sql_query
 from abc import ABC, abstractmethod
+from sys import modules as sys_modules
 
 class SQLInputAbstractClass(ABC):
     def get_data(self):
-        return pd.read_sql_query(
+        return read_sql_query(
             self.query_to_exec,
             self.con
         ).to_dict(
@@ -24,8 +23,13 @@ class tSqliteInput(SQLInputAbstractClass):
         query: SQL query optional
         tablename: tablename
         """
-        self.con = sqlite3.connect(
-            os.path.join(
+        if "sqlite3" not in sys_modules:
+            from sqlite3 import connect as sqlite3connect
+        if "os" not in sys_modules:
+            from os.path import join as os_path_join
+        print(sys_modules)
+        self.con = sqlite3connect(
+            os_path_join(
                 kwargs.get("location")
             )
         )
